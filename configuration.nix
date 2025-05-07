@@ -28,7 +28,7 @@
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
+  time.timeZone = "America/Vancouver";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -43,36 +43,55 @@
   # };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services = {
+    xserver = {
+      enable = true;
+      layout = "us";
+    };
+
+    # Use SDDM as the display manager
+    displayManager.sddm.enable = true;
+
+    # Enable KDE Plasma with Wayland support
+    desktopManager.plasma6.enable = true;
+
+    # Ensure Wayland support in the system
+    # wayland.enable = true;
+  };
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  services.printing.enable = true;
 
   # Enable sound.
   # hardware.pulseaudio.enable = true;
   # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
+  services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.alice = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  #   packages = with pkgs; [
-  #     tree
-  #   ];
-  # };
+  users.users = {
+    # Root User
+    root = {
+      shell = pkgs.zsh;
+    };
+    # Main User - Hydra
+    hydra = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+      shell = pkgs.zsh;
+    };
+  };
 
-  # programs.firefox.enable = true;
+  programs.firefox.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -98,6 +117,7 @@
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
+  programs.zsh.enable = true;
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {
   #   enable = true;
