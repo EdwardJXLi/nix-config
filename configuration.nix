@@ -22,6 +22,10 @@
   hardware.enableAllFirmware = true;
   nixpkgs.config.allowUnfree = true;
 
+  # Enable bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
   networking.hostName = "EdwardNixOS"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -100,6 +104,7 @@
     git
     tmux
     vim
+    bash
     zsh
 
     # Networking & Internet
