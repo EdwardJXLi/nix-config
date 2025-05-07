@@ -100,6 +100,9 @@
         chromium
         code-cursor
         bitwarden-desktop
+        gimp
+        audacity
+        obsidian
       ];
     };
   };
