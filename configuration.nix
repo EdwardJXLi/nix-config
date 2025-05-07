@@ -33,6 +33,7 @@
 
   # Set your time zone.
   time.timeZone = "America/Vancouver";
+  time.hardwareClockInLocalTime = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
