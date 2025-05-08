@@ -62,6 +62,9 @@
 
     # Ensure Wayland support in the system
     # wayland.enable = true;
+
+    # Enable Tailscale
+    tailscale.enable = true;
   };
 
   # Configure keymap in X11
