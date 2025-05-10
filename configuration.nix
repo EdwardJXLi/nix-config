@@ -4,6 +4,13 @@
 
 { config, lib, pkgs, ... }:
 
+let
+  # Import the unstable channel
+  unstable = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz") {
+    # Inherit your system configuration
+    inherit (config.nixpkgs) config system;
+  };
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -121,6 +128,7 @@
         audacity
         obsidian
         libreoffice
+        claude-code
       ];
     };
   };
@@ -134,6 +142,10 @@
       nightlyOverlay = (import "${moz-url}/firefox-overlay.nix");
     in [
       nightlyOverlay
+      # Add claude-code from unstable
+      (final: prev: {
+        claude-code = unstable.claude-code;
+      })
     ];
   programs.firefox.package = pkgs.latest.firefox-nightly-bin;
   programs.firefox.enable = true;
