@@ -90,6 +90,12 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
+  # Fix USB Permission issues with stlink
+  services.udev.extraRules = ''
+    # For STLink/V2
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", MODE="0666"
+  '';
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
     # Root User
@@ -99,7 +105,10 @@
     # Main User - Hydra
     hydra = {
       isNormalUser = true;
-      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+      extraGroups = [
+        "wheel"  # Enable ‘sudo’ for the user.
+        "plugdev"  # Fix USB permission issues
+      ];
       shell = pkgs.zsh;
       packages = with pkgs; [
         # User applications
