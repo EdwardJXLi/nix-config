@@ -18,6 +18,11 @@
   # Add btrfs support
   boot.supportedFilesystems = [ "btrfs" ];
 
+  # Enable some kernel modules
+  boot.kernelModules = [
+    "vhci-hcd"  # USB-IP Drivers
+  ];
+
   # Enable firmware and microcode
   hardware.enableAllFirmware = true;
   nixpkgs.config.allowUnfree = true;
