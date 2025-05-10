@@ -120,6 +120,7 @@
         gimp
         audacity
         obsidian
+        libreoffice
       ];
     };
   };
