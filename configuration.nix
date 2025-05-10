@@ -4,17 +4,11 @@
 
 { config, lib, pkgs, ... }:
 
-let
-  # Import the unstable channel
-  unstable = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz") {
-    # Inherit your system configuration
-    inherit (config.nixpkgs) config system;
-  };
-in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      # Note: user-packages.nix is imported via flake.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -103,7 +97,7 @@ in
     SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", MODE="0666"
   '';
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define a user account. Don't forget to set a password with 'passwd'.
   users.users = {
     # Root User
     root = {
@@ -113,42 +107,19 @@ in
     hydra = {
       isNormalUser = true;
       extraGroups = [
-        "wheel"  # Enable ‘sudo’ for the user.
+        "wheel"  # Enable 'sudo' for the user.
         "plugdev"  # Fix USB permission issues
       ];
       shell = pkgs.zsh;
-      packages = with pkgs; [
-        # User applications
-        yakuake
-        discord-canary
-        chromium
-        code-cursor
-        bitwarden-desktop
-        gimp
-        audacity
-        obsidian
-        libreoffice
-        claude-code
-      ];
+      # User packages are defined in user-packages.nix
     };
   };
 
   # Install Firefox Nightly
-  nixpkgs.overlays =
-    let
-      # Change this to a rev sha to pin
-      moz-rev = "master";
-      moz-url = builtins.fetchTarball { url = "https://github.com/mozilla/nixpkgs-mozilla/archive/${moz-rev}.tar.gz";};
-      nightlyOverlay = (import "${moz-url}/firefox-overlay.nix");
-    in [
-      nightlyOverlay
-      # Add claude-code from unstable
-      (final: prev: {
-        claude-code = unstable.claude-code;
-      })
-    ];
-  programs.firefox.package = pkgs.latest.firefox-nightly-bin;
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    package = pkgs.mozilla.latest.firefox-nightly-bin;
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -202,10 +173,12 @@ in
   # accidentally delete configuration.nix.
   # system.copySystemConfiguration = true;
 
-  nix.package = pkgs.nixVersions.stable;
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
+  nix = {
+    package = pkgs.nixVersions.stable;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
@@ -225,6 +198,5 @@ in
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }
 
