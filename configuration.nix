@@ -146,6 +146,7 @@
     vim
     bash
     zsh
+    ripgrep
 
     # Networking & Internet
     curl
@@ -155,6 +156,7 @@
     htop
     neofetch
     tree
+    usbutils
 
     # Applications
     vscode
