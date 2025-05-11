@@ -14,6 +14,7 @@
     yakuake
     gimp
     audacity
+    inkscape
     libreoffice
 
     # Desktop packages
