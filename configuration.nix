@@ -131,6 +131,7 @@
     bash
     zsh
     ripgrep
+    lazygit
 
     # Networking & Internet
     curl
