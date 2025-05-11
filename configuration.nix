@@ -57,7 +57,7 @@
   services = {
     xserver = {
       enable = true;
-      layout = "us";
+      xkb.layout = "us";
     };
 
     # Use SDDM as the display manager
