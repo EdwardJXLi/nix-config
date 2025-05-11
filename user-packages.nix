@@ -19,7 +19,6 @@
     libreoffice
     
     # Unstable packages
-    # This works because we added the overlay in flake.nix
-    # unstable.claude-code
+    unstable.claude-code
   ];
 }

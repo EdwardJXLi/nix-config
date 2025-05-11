@@ -1,5 +1,5 @@
 {
-  description = "NixOS configuration with separate user packages";
+  description = "NixOS Configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
@@ -18,7 +18,10 @@
       
       # Function to create overlay for unstable packages
       overlay-unstable = final: prev: {
-        unstable = nixpkgs-unstable.legacyPackages.${system};
+        unstable = import nixpkgs-unstable {
+          inherit system;
+          config.allowUnfree = true;
+        };
       };
       
       # Mozilla overlay for Firefox Nightly
@@ -40,7 +43,7 @@
               overlay-mozilla 
             ];
 
-            # Important: Allow unfree packages explicitly here (for claude-code)
+            # Important: Allow unfree packages explicitly here
             nixpkgs.config.allowUnfree = true;            
           }
           
