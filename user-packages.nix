@@ -5,6 +5,22 @@
   # Ensure unfree packages are allowed
   nixpkgs.config.allowUnfree = true;
 
+  # Define root packages
+  users.users.root.packages = with pkgs; [
+    # CLI Packages
+    dig
+    btop
+    ripgrep
+    ranger
+    glances
+    lazygit
+    lazydocker
+    zoxide
+    tldr
+    cheat
+  ];
+
+
   # Define user packages
   users.users.hydra.packages = with pkgs; [
     # CLI Packages
