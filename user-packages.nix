@@ -7,16 +7,22 @@
 
   # Define user packages
   users.users.hydra.packages = with pkgs; [
-    # Main system packages
+    # CLI Packages
+    ripgrep
+
+    # System Packages
     yakuake
-    discord-canary
-    chromium
-    code-cursor
-    bitwarden-desktop
     gimp
     audacity
-    obsidian
     libreoffice
+
+    # Desktop packages
+    discord-canary
+    chromium
+    vscode
+    code-cursor
+    bitwarden-desktop
+    obsidian
     
     # Unstable packages
     unstable.claude-code

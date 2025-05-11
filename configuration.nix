@@ -141,9 +141,6 @@
     neofetch
     tree
     usbutils
-
-    # Applications
-    vscode
     python3
   ];
 
