@@ -8,7 +8,16 @@
   # Define user packages
   users.users.hydra.packages = with pkgs; [
     # CLI Packages
+    dig
+    btop
     ripgrep
+    ranger
+    glances
+    lazygit
+    lazydocker
+    zoxide
+    tldr
+    cheat
 
     # System Packages
     yakuake

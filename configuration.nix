@@ -127,11 +127,10 @@
     # Shell & Terminal Utilities
     git
     tmux
+    screen
     vim
     bash
     zsh
-    ripgrep
-    lazygit
 
     # Networking & Internet
     curl
