@@ -25,6 +25,7 @@
     audacity
     inkscape
     libreoffice
+    vlc
 
     # Desktop packages
     discord-canary
