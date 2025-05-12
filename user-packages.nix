@@ -18,6 +18,7 @@
     zoxide
     tldr
     cheat
+    docker-compose
   ];
 
 
@@ -34,6 +35,7 @@
     zoxide
     tldr
     cheat
+    docker-compose
 
     # System Packages
     yakuake

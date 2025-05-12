@@ -154,6 +154,17 @@
   # };
   programs.nix-ld.enable = true;
 
+  # Enable docker
+  virtualisation.docker = {
+    enable = true;
+    storageDriver = "btrfs";
+    enableOnBoot = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
