@@ -19,6 +19,7 @@
     tldr
     cheat
     docker-compose
+    shell-gpt
   ];
 
 
@@ -36,6 +37,7 @@
     tldr
     cheat
     docker-compose
+    shell-gpt
 
     # System Packages
     yakuake
