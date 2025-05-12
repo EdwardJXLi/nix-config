@@ -15,7 +15,6 @@
     glances
     lazygit
     lazydocker
-    zoxide
     tldr
     cheat
     docker-compose
@@ -38,6 +37,7 @@
     cheat
     docker-compose
     shell-gpt
+    mesa-demos
 
     # System Packages
     yakuake

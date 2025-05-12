@@ -148,6 +148,7 @@
     htop
     neofetch
     tree
+    psmisc
     usbutils
     python3
   ];
