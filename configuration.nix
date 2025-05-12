@@ -91,6 +91,14 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
+  # Enable cron service
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "0 * * * * find /home/hydra/Downloads -mtime +7 -exec rm -rf {} \; >/dev/null"  # Cleans downloads folder
+    ];
+  };
+
   # Fix USB Permission issues with stlink
   services.udev.extraRules = ''
     # For STLink/V2
