@@ -65,6 +65,7 @@ in {
 
     # Unfree Apps
     unfree.jetbrains.idea-ultimate
+    unfree.obsidian
     unfree.slack
 
     # Unstable / Latest Packages
