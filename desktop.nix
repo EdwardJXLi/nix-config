@@ -11,17 +11,6 @@ let
     config.allowUnfree = true;  # Allow unfree packages in unstable too
   };
 
-  # Mozilla overlay for Firefox Nightly
-  # moz-rev = "master";
-  # moz-url = builtins.fetchTarball { url = "https://github.com/mozilla/nixpkgs-mozilla/archive/${moz-rev}.tar.gz";};
-  moz-rev = "channel";
-  moz-url = builtins.fetchTarball { url = "https://github.com/andersk/nixpkgs-mozilla/archive/${moz-rev}.tar.gz";};
-  nightlyOverlay = (import "${moz-url}/firefox-overlay.nix");
-
-  mozillaNightly = import <nixpkgs> {
-    overlays = [ nightlyOverlay ];
-  };
-
   # Create shorter aliases for nixGL wrapping
   wrapGL = config.lib.nixGL.wrap;
   wrapGlAll = packages: map wrapGL packages;
@@ -59,9 +48,6 @@ in {
     kdePackages.gwenview
     kdePackages.kate
     kdePackages.okular
-
-    # Firefox Nightly
-    mozillaNightly.latest.firefox-nightly-bin
 
     # Unfree Apps
     unfree.jetbrains.idea-ultimate
