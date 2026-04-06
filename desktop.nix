@@ -16,13 +16,13 @@ let
   wrapGlAll = packages: map wrapGL packages;
 in {
   # Setup libGL to use system opengl
-  nixGL.packages = import (builtins.fetchTarball {
+  targets.genericLinux.nixGL.packages = import (builtins.fetchTarball {
     url = "https://github.com/nix-community/nixGL/archive/main.tar.gz";
   }) { inherit pkgs; };
 
-  nixGL.defaultWrapper = "mesa";  # Use mesa for AMD
-  nixGL.installScripts = [ "mesa" ];  # Install nixGLMesa script
-  nixGL.vulkan.enable = true;
+  targets.genericLinux.nixGL.defaultWrapper = "mesa";  # Use mesa for AMD
+  targets.genericLinux.nixGL.installScripts = [ "mesa" ];  # Install nixGLMesa script
+  targets.genericLinux.nixGL.vulkan.enable = true;
 
   # Desktop packages
   home.packages = wrapGlAll (with pkgs; [
@@ -50,7 +50,7 @@ in {
     kdePackages.okular
 
     # Unfree Apps
-    unfree.jetbrains.idea-ultimate
+    unfree.jetbrains.idea
     unfree.obsidian
     unfree.slack
 
