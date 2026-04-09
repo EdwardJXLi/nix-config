@@ -1,16 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, unstable, ... }:
 
-let
-  # Unfree packages
-  unfree = import <nixpkgs> {
-    config.allowUnfree = true;
-  };
-
-  # Unstable packages channel
-  unstable = import <unstable> {
-    config.allowUnfree = true;  # Allow unfree packages in unstable too
-  };
-in {
+{
   # Extra / non-required packages
   home.packages = with pkgs; [
     # CLI Tools
@@ -45,7 +35,7 @@ in {
     uv
 
     # Unfree Packages
-    unfree.rar
+    rar
 
     # Unstable / Latest Packages
     unstable.claude-code

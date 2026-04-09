@@ -1,24 +1,12 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, unstable, nixgl, ... }:
 
 let
-  # Unfree packages
-  unfree = import <nixpkgs> {
-    config.allowUnfree = true;
-  };
-
-  # Unstable packages channel
-  unstable = import <unstable> {
-    config.allowUnfree = true;  # Allow unfree packages in unstable too
-  };
-
   # Create shorter aliases for nixGL wrapping
   wrapGL = config.lib.nixGL.wrap;
   wrapGlAll = packages: map wrapGL packages;
 in {
   # Setup libGL to use system opengl
-  targets.genericLinux.nixGL.packages = import (builtins.fetchTarball {
-    url = "https://github.com/nix-community/nixGL/archive/main.tar.gz";
-  }) { inherit pkgs; };
+  targets.genericLinux.nixGL.packages = nixgl.packages.${pkgs.system};
 
   targets.genericLinux.nixGL.defaultWrapper = "mesa";  # Use mesa for AMD
   targets.genericLinux.nixGL.installScripts = [ "mesa" ];  # Install nixGLMesa script
@@ -50,9 +38,9 @@ in {
     kdePackages.okular
 
     # Unfree Apps
-    unfree.jetbrains.idea
-    unfree.obsidian
-    unfree.slack
+    jetbrains.idea
+    obsidian
+    slack
 
     # Unstable / Latest Packages
     unstable.antigravity
