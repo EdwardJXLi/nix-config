@@ -6,7 +6,7 @@ let
   wrapGlAll = packages: map wrapGL packages;
 in {
   # Setup libGL to use system opengl
-  targets.genericLinux.nixGL.packages = nixgl.packages.${pkgs.system};
+  targets.genericLinux.nixGL.packages = nixgl.packages.${pkgs.stdenv.hostPlatform.system};
 
   targets.genericLinux.nixGL.defaultWrapper = "mesa";  # Use mesa for AMD
   targets.genericLinux.nixGL.installScripts = [ "mesa" ];  # Install nixGLMesa script
