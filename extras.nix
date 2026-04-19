@@ -1,4 +1,4 @@
-{ pkgs, unstable, ... }:
+{ pkgs, unstable, master, ... }:
 
 {
   # Extra / non-required packages
@@ -37,9 +37,9 @@
     # Unfree Packages
     rar
 
-    # Unstable / Latest Packages
-    unstable.claude-code
-    unstable.codex
-    unstable.gemini-cli-bin
+    # Bleeding Edge Latest Packages
+    master.claude-code
+    master.codex
+    master.gemini-cli-bin
   ];
 }

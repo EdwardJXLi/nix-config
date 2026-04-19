@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
@@ -16,7 +17,7 @@
     };
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nixgl, ... }:
+  outputs = { nixpkgs, nixpkgs-unstable, nixpkgs-master, home-manager, nixgl, ... }:
     let
       system = "x86_64-linux";
 
@@ -30,8 +31,13 @@
         config.allowUnfree = true;
       };
 
+      master = import nixpkgs-master {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
       extraSpecialArgs = {
-        inherit unstable nixgl;
+        inherit unstable master nixgl;
       };
     in {
       homeConfigurations = {
