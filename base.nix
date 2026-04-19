@@ -32,6 +32,7 @@
     lsof
     p7zip
     rsync
+    smartmontools
     tree
     unzip
     which
