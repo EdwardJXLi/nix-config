@@ -13,6 +13,7 @@
     nix-search-cli
     nh
     podman-tui
+    radeontop
     shell-gpt
     smartmontools
     tldr
