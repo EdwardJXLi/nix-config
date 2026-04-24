@@ -1,10 +1,16 @@
 {
   description = "Hydra's Home Manager configuration";
 
+  nixConfig = {
+    extra-substituters = [ "https://cache.numtide.com" ];
+    extra-trusted-public-keys = [
+      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
@@ -15,9 +21,11 @@
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    llm-agents.url = "github:numtide/llm-agents.nix";
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, nixpkgs-master, home-manager, nixgl, ... }:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nixgl, llm-agents, ... }:
     let
       system = "x86_64-linux";
 
@@ -31,13 +39,10 @@
         config.allowUnfree = true;
       };
 
-      master = import nixpkgs-master {
-        inherit system;
-        config.allowUnfree = true;
-      };
+      llmAgents = llm-agents.packages.${system};
 
       extraSpecialArgs = {
-        inherit unstable master nixgl;
+        inherit unstable llmAgents nixgl;
       };
     in {
       homeConfigurations = {

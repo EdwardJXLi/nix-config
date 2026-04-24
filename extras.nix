@@ -1,4 +1,4 @@
-{ pkgs, unstable, master, ... }:
+{ pkgs, unstable, llmAgents, ... }:
 
 {
   # Extra / non-required packages
@@ -38,9 +38,9 @@
     # Unfree Packages
     rar
 
-    # Bleeding Edge Latest Packages
-    master.claude-code
-    master.codex
-    master.gemini-cli-bin
+    # LLM Agents (numtide/llm-agents.nix)
+    llmAgents.claude-code
+    llmAgents.codex
+    llmAgents.gemini-cli
   ];
 }
