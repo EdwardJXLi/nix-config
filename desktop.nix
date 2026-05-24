@@ -20,6 +20,7 @@ in {
     boxbuddy
     emote
     gimp
+    google-chrome
     gparted
     inkscape
     krita
@@ -44,7 +45,6 @@ in {
 
     # Unstable / Latest Packages
     unstable.antigravity
-    unstable.chromium
     unstable.code-cursor
     unstable.discord-canary
     unstable.vicinae
