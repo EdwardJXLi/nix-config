@@ -29,6 +29,7 @@
     distrobox
     gdb
     nodejs_24
+    ruby
     rustup
     podman
     podman-compose
