@@ -24,7 +24,6 @@
 
     # Development Packages
     buildah
-    corepack
     direnv
     distrobox
     gdb
