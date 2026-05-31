@@ -39,7 +39,6 @@ in {
     kdePackages.okular
 
     # Unfree Apps
-    android-studio
     jetbrains.idea
     obsidian
     slack
