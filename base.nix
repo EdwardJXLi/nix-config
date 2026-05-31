@@ -26,8 +26,8 @@
 
     # System Tools & Utilities
     btop
+    fastfetch
     htop
-    neofetch
     nettools
     lsof
     p7zip
