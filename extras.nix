@@ -23,6 +23,7 @@
     zoxide
 
     # Development Packages
+    android-tools
     buildah
     direnv
     distrobox
