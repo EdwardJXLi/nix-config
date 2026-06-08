@@ -28,7 +28,10 @@
     direnv
     distrobox
     gdb
+    nim
+    nimble
     nodejs_24
+    nph
     ruby
     rustup
     podman
@@ -36,6 +39,8 @@
     python313
     qemu
     uv
+    zig
+    zls
 
     # Unfree Packages
     rar
