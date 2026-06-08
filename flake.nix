@@ -33,6 +33,9 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
+        config.permittedInsecurePackages = [
+          "electron-39.8.10"
+        ];
       };
 
       unstable = import nixpkgs-unstable {
