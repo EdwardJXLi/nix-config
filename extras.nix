@@ -14,6 +14,7 @@
     ngrok
     nh
     nix-search-cli
+    openconnect
     pgrok
     podman-tui
     radeontop
