@@ -51,7 +51,6 @@ in {
     unstable.code-cursor
     unstable.cursor-cli
     unstable.discord-canary
-    unstable.vicinae
     unstable.vscode
     unstable.zed-editor
   ]);
