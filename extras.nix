@@ -20,6 +20,7 @@
     radeontop
     shell-gpt
     smartmontools
+    tailscale
     tldr
     usbutils
     zellij
