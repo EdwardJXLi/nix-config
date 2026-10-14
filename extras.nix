@@ -54,6 +54,7 @@
     llmAgents.claude-code
     llmAgents.codex
     llmAgents.nanocoder
+    llmAgents.omp
     llmAgents.opencode
     llmAgents.pi
   ];
