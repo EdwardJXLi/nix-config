@@ -53,6 +53,8 @@
     llmAgents.antigravity-cli
     llmAgents.claude-code
     llmAgents.codex
+    llmAgents.hax
+    llmAgents.maki
     llmAgents.nanocoder
     llmAgents.omp
     llmAgents.opencode
