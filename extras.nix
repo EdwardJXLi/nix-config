@@ -6,6 +6,7 @@
     # CLI Tools
     asciinema
     asciinema-agg
+    browsh
     glances
     lazygit
     lynx
