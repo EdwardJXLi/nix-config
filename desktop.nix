@@ -17,6 +17,7 @@ in {
     # Core Apps
     audacity
     bitwarden-desktop
+    blender
     boxbuddy
     btrfs-assistant
     emote
